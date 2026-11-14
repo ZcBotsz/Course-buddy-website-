@@ -28,6 +28,36 @@ const BUNDLES = {
     ["40b66aad-55c8-4208-96d5-31422c6c5c38", "Sexercise Mastery", "d196c840-9ebb-410b-a97e-f5e7728f6389.jpg", ""],
     ["71272c30-5195-4d89-95a7-dffe49b6256c", "Sexual Control Starter - Extra Bonus", "19e219c3-abf9-4892-bd18-911400afccdf.jpg", ""]
   ],
+  "92c9b2bb-e3d4-4387-a5b6-649a3fb37f5a": [
+    ["d51f13f3-1dc4-4fea-b3b2-e8c92a8eb3bf", "NitishFX Elite Pack", "427e40f3-b67d-457c-93fb-1fdcf3c2a818.jpg", "Finance"],
+    ["b80c346f-72a7-4d4f-88b0-e5bc31d67e0b", "NitishFX ELITE PRO", "8aba2080-fe45-40dd-b9cc-d9564f83afb3.jpg", "Finance"],
+    ["659ad0e0-22d3-4895-9722-c8068793214c", "Secret Indicator to Find Liquidity and Sniper Entries", "f5df578b-bbbe-4e50-8ec1-6cd82b0290ba.jpg", "Finance"],
+  ],
+  "13a293ae-3567-4f85-a97b-702a91be93fa": [
+    ["ac864542-c756-46f1-adc7-1adb01fe829e", "Debt Management Masterclass", "4f700ebd-ddb5-44c0-8f04-74de0a178a79.jpg", "Finance"],
+    ["d54f6d86-82ad-4df2-a303-69f5b2129587", "Financial Planning & Retirement Planning Masterclass", "6717d267-3d57-4f36-9b50-2f49f48c2b97.jpg", "Finance"],
+    ["c53e7fb1-e0d2-4a6d-88de-f0142cc3f689", "Insurance Masterclass", "b1dc3c08-5558-422a-8890-8602c85e36d6.jpg", "Finance"],
+    ["28e82011-66ee-4b86-b956-e65f02a8ca36", "Investors Notes & Wisdom", "d7f813ec-43b7-4bcc-a749-0b05c3b3be28.jpg", "Finance"],
+    ["658b2ffc-0c48-44c7-91b8-8dc74032099c", "Mutual Funds Masterclass Recorded Sessions", "ad33b1db-8dda-459a-9e3e-6a5f853c49a4.jpg", "Finance"],
+  ],
+  "2c7e4ff9-f163-4390-b4b5-98f7693dc25c": [
+    ["8d78af4b-b5a6-442f-ab4e-6f2aead769fc", "Decoding Futures & Options Video Course By Zebra Learn", "0398ce20-42f9-4ef0-ade8-d192e0e59f03.jpg", ""],
+    ["bf951b4a-055c-4ef7-8028-41660bcef420", "Financial Analysis of Companies Video Course By Zebra Learn", "20bc5c91-f467-4c01-a728-f69354a6badd.jpg", ""],
+    ["533366e2-28fd-43cf-aa25-b0384c9faf59", "Financial Modeling & Valuations Video Course By Zebra Learn", "cda17f99-a864-42e6-8bff-d5752587c4e4.jpg", ""],
+    ["4754b08c-f8d8-4de6-ada6-b4a9f008b824", "How to Raise Your First Crore -Fund Raise Video Course By Zebra Learn", "16efa8ac-8262-4ce8-881b-5ae69d3e6c96.jpg", ""],
+    ["f191b162-ee44-4372-a689-2a38ee827a0a", "Investing Psychology Video Course By Zebra Learn", "78d140d5-26d6-4456-b5ef-61910c8218c6.jpg", ""],
+    ["cac32141-b64a-40ad-951f-410554d4d681", "MS Excel for Finance Video Course By Zebra Learn", "a3027311-f401-441b-aaca-ce98817dde8c.jpg", ""],
+    ["be4db014-a801-44d6-8b3f-f1a74b11b6c8", "Stock Investing for Individuals Video Course By Zebra Learn", "7138c4a0-270a-45ed-885c-ed95f2c94078.jpg", ""],
+  ],
+  "f207b568-5379-4993-8022-9f68165ddd5f": [
+    ["d414df3b-9236-4696-a53a-13f0206ef085", "Personal Branding Course", "f169122f-a36f-43cb-a562-61c10d3b39d2.jpg", "Marketing"],
+    ["43d2420d-9a12-42a6-9376-aabcda01dd6a", "Learn complete Meta Ads Course By Prince Jalani", "7953efd3-5764-4911-8f14-c2e9a947d05f.jpg", "Marketing"],
+    ["87016fdb-c885-49a0-8064-81114477cd3e", "How to Make Great Ads", "04aa5e4f-4348-42b5-b3c8-6fde433f760d.jpg", "Marketing"],
+    ["8b33e76a-73cd-4cf2-ba66-6ee9b65e910b", "THe Ads Toolkit", "bdadb993-1faa-4c85-9f52-c5db5137fdff.jpg", "Marketing"],
+    ["d9ae8a01-d07e-40f1-ae11-ee714aaa7ae5", "Learn Complete Google Ads & Youtube Ads", "3c457d29-bae4-4de4-81f8-bc90e38bb3e0.jpg", "Marketing"],
+    ["5f18c3bd-3695-450e-8bcb-861cfdb8b336", "Rapid Growth Marketing Toolkit", "f10a8dde-5b25-4fed-948e-bb2306bc3e42.jpg", "Marketing"],
+    ["5ff6ba28-53ea-4343-aedf-d7877dd6bb98", "Meta Scaling Toolkit – Secrets to Scaling Ads Profitably (PDF Guides) By Prince Jalani", "7280c09b-0ae6-41e9-b878-00713b999e4a.jpg", "Marketing"],
+  ],
   "5fffbc55-a8b2-4002-95fa-cee726172ca2": [
     ["042e2b80-e6d7-4b2b-b4b2-35250c503478", "Business Finance Course By Basesh Gala (Business Mentor and Coach)", "08c2c4b5-b4a2-4032-ad66-c48cca9604a7.webp", "Business&Sales"],
     ["6e3d20e8-dcc4-4c3b-a8ee-28897146a73d", "Business Foundation Course By Basesh Gala (Business Mentor and Coach)", "2c825bab-f818-4b33-a9c0-66e35b104c0b.webp", "Business&Sales"],
