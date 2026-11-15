@@ -1,0 +1,2 @@
+export function monthLabel(iso: string) { return new Date(iso).toLocaleDateString('en-US', { month: 'long', year: 'numeric', timeZone: 'Asia/Kolkata' }); }
+export function groupUpdatesByMonth<T extends { created_at: string }>(items: T[]) { const map = new Map<string, T[]>(); for (const item of items) { const key = monthLabel(item.created_at); if (!map.has(key)) map.set(key, []); map.get(key)!.push(item); } return Array.from(map.entries()).sort((a,b) => new Date(b[1][0].created_at).getTime() - new Date(a[1][0].created_at).getTime()); }
