@@ -1,0 +1,30 @@
+{
+  "name": "course-buddy-2",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Course Buddy \u2014 premium courses library clone with Telegram access routing.",
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0 --port 3000",
+    "build": "next build",
+    "start": "next start --hostname 0.0.0.0 --port 3000",
+    "test": "node tests/verify.mjs",
+    "verify:links": "node scripts/verify-links.mjs",
+    "resume": "node scripts/resume.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^15.5.29",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.18.6",
+    "@types/react": "19.1.13",
+    "@types/react-dom": "19.1.9",
+    "playwright": "1.55.1",
+    "typescript": "5.9.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
