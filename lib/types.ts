@@ -1,0 +1,4 @@
+export type Category = { id:string; name:string; slug:string; description:string|null; thumbnail_url:string|null; sort_order:number; count:number };
+export type Course = { id:string; title:string; description:string|null; thumbnail_url:string|null; price:string|null; sales_page_url:string|null; category_id:string; parent_course_id:string|null; sort_order:number; content?:string|null; drive_url?:string|null; section_title?:string|null; categories:{name:string;slug:string}; child_count:number };
+export type Update = { id:string; type:string; title:string; description:string|null; course_id:string; created_at:string; sort_order:number; courses:{title:string;categories:{name:string;slug:string};category_id:string;thumbnail_url:string|null} };
+export type WatchlistItem = { id:string; title:string; thumbnail_url:string|null; price:string|null; category_id:string|null };

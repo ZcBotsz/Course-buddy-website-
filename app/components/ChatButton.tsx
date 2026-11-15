@@ -1,0 +1,3 @@
+import { CHAT_URL } from '@/lib/config';
+import { TelegramIcon } from './Icons';
+export function ChatButton() { return <a href={CHAT_URL} target="_blank" rel="noopener noreferrer" aria-label="Chat with support on Telegram" data-testid="chat-link" className="fixed bottom-5 right-5 z-40 hidden h-11 cursor-pointer items-center gap-2 rounded-full bg-gradient-to-br from-[#2AABEE] to-[#1E96D6] pl-1.5 pr-3.5 text-[#fff] shadow-lg shadow-[#178dc4]/50 ring-1 ring-[#fff]/15 transition-transform duration-200 hover:scale-105 md:flex"><img src="/buddy-avatar.webp" alt="" width={32} height={32} className="h-8 w-8 rounded-full object-cover" /><span className="inline-flex items-center gap-1 text-sm font-semibold">Chat<TelegramIcon className="h-3.5 w-3.5" /></span></a>; }
