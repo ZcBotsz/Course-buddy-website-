@@ -1,190 +1,110 @@
-# Course Buddy 2 — Complete Clone Guide
+# Course Buddy 2
 
-A work-in-progress recreation of [buddy7.vercel.app](https://buddy7.vercel.app/) (originally **Courses Buddy**), rebranded to **Course Buddy 2** with Telegram links pointed at **@CourseBuddy_Admin**.
+A rebranded, self-contained clone of the public `buddy7.vercel.app` course library.
 
-The intended changes are the name and Telegram username only. Exact fidelity is not yet verified: some course descriptions and category names need further checking, bundle sub-course pages are not yet reproduced, and the routing and layout differ from the original.
+## What changed
+- Brand: **Courses Buddy → Course Buddy 2**
+- Welcome heading: **Welcome to Course Buddy 2**
+- Every access/chat Telegram link: **@CourseBuddy_Admin** (`https://t.me/CourseBuddy_Admin`)
+- Catalogue, thumbnails, fonts, icons, favicon, and OG image are served locally.
 
----
+## Requirements
+- Node.js **20+** (Node 22 or 24 LTS recommended)
+- npm
 
-## 1. What was reverse-engineered from the original site
-
-| Area | Finding |
-|---|---|
-| Stack | Static frontend on Vercel + Supabase storage (`/sb-storage/thumbnails/...`) |
-| Home | Header (logo, search, “Browse Categories”, 17 categories), hero “Welcome to Courses Buddy”, “Latest courses added” grouped by month (Nov → Jul 2026) |
-| Course card | Thumbnail, category badge, title, **Details** (→ `/course/<uuid>`) + **Get Access** (→ `https://telegram.me/Courses_Buddy?text=Hi Buddy 😄…I want access to "<title>"`) |
-| Detail page | Big thumbnail, title, Get Access, Save to Watchlist, About, What You’ll Learn, Show full description, Official course page (where present) |
-| Floating button | Bottom-right **Chat** avatar → `https://telegram.me/Courses_Buddy?text=Hi Buddy, I'm interested in courses` |
-| Extras | Search, category filter, watchlist (saved locally) |
-
-The current implementation includes 59 course entries and their thumbnail URLs. Some entries and details still need verification against the original.
-
----
-
-## 2. Project structure
-
-```
-.
-├── index.html          ← page shell (header, footer, chat button)
-├── css/
-│   └── style.css       ← all styling (responsive, mobile-friendly)
-├── js/
-│   ├── config.js       ← ★ SINGLE SOURCE OF TRUTH: site name + Telegram username
-│   ├── data.js         ← 17 categories + 59 courses (titles, months, thumbnails, about, learn[])
-│   └── app.js          ← router (#/ , #/course/<id>, #/watchlist), search, filters, watchlist
-├── vercel.json         ← Vercel deploy config
-└── README.md           ← this guide
-```
-
-**Key design decision:** `js/config.js` is the *only* place that contains the site name and the Telegram username.
-Every button/link is generated from it, so you can never miss a spot.
-
-```js
-// js/config.js
-const SITE_CONFIG = {
-  siteName: "Course Buddy 2",
-  telegramUsername: "CourseBuddy_Admin",
-  ...
-};
-```
-
----
-
-## 3. Run it locally (step by step)
-
-You need any static file server. Pick one:
-
-**Option A — Python (no install needed on most systems):**
+## Quick start
 ```bash
-cd Course-buddy-website-
-python3 -m http.server 8000
-# open http://localhost:8000
+npm ci
+npm run dev
+# open http://localhost:3000
 ```
 
-**Option B — Node:**
+## Production
 ```bash
-cd Course-buddy-website-
-npx serve .
-# open the URL shown in the terminal
+npm ci
+npm run typecheck
+npm run build
+npm run start
 ```
 
-**Option C — VS Code:** right-click `index.html` → *Open with Live Server*.
+## Deploy this branch to Vercel
 
-> ⚠️ Don’t open `index.html` with `file://` — ES modules / fetch can be blocked.
-> Always serve over `http://localhost`.
+Import the GitHub repository and select `arena/eb0db19d-course-buddy-website`. Use the Next.js preset and leave the output directory at its default. The public catalog uses the JSON files in `data/`; the optional admin panel requires the Supabase environment variables in `.env.example`.
 
----
+## Other deployment options
 
-## 4. How the site works (developer notes)
+### Easiest: Vercel Drop (no Git, no CLI, no unzipping)
+1. Go to **https://vercel.com/drop** and sign in.
+2. Drag **`course-buddy.zip`** onto the page — the ZIP itself.
+3. Name the project and click **Deploy**.
 
-### Routing
-Hash-based, so it works on **any** static host with zero server config:
-- `#/` → home (courses grouped by month)
-- `#/course/<uuid>` → course detail (About, What You’ll Learn, Get Access, Save to Watchlist, Related)
-- `#/watchlist` → saved courses (stored in `localStorage`, key `coursebuddy2_watchlist`)
+Vercel detects Next.js and builds it automatically. No environment variables needed.
+See `START-HERE.txt` for the plain-English walkthrough.
 
-### Telegram links (verified logic)
-```js
-// Get Access (per course)
-https://telegram.me/CourseBuddy_Admin?text=Hi%20Buddy%20%F0%9F%98%84%0A%0AI%20want%20access%20to%20%22<Course Title>%22
+### Alternative: GitHub or CLI
+1. Push this project to GitHub, or use the Vercel CLI from the project folder.
+2. Import it into Vercel with the **Next.js** framework preset.
+3. Use build command `npm run build`; leave the output directory default.
+4. No database or Telegram bot token is required.
+5. `NEXT_PUBLIC_SITE_URL` is optional. On Vercel the app auto-detects the deployment/production URL; set it only when you want a specific custom domain for metadata/social previews.
 
-// Floating Chat
-https://telegram.me/CourseBuddy_Admin?text=Hi%20Buddy%2C%20I%27m%20interested%20in%20courses
-```
-Built with `encodeURIComponent()` in `config.js` — no manual encoding mistakes.
-
-### Search & filters
-- Header search filters by title/category as you type.
-- “Browse Categories” dropdown (17 categories) filters the grid.
-- Active filter pill shows result count with a ✕ Clear button.
-
-### Thumbnails
-Images are hot-linked to the original storage
-(`https://buddy7.vercel.app/sb-storage/thumbnails/<file>`) so the clone looks identical.
-If an image fails to load, a gradient placeholder with the course initials appears automatically.
-
-**To fully own the images (recommended before launch):**
-1. Download each thumbnail into `images/thumbnails/`
-2. In `js/data.js`, change `thumbnail: THUMB("...")` to `thumbnail: "images/thumbnails/<file>"`
-3. Update the chat avatar in `index.html` the same way.
-
----
-
-## 5. Change the name or username (1-minute task)
-
-Edit **only** `js/config.js`:
-
-```js
-siteName: "Course Buddy 2",          // ← change here
-telegramUsername: "CourseBuddy_Admin", // ← change here
+CLI:
+```bash
+npx vercel@latest
+npx vercel@latest --prod
 ```
 
-Done. Header, hero, footer, title tag, and **all** Telegram buttons update instantly.
-No other file needs touching. (The `<title>` in `index.html` is also set by JS on load.)
+Full deployment details: `GUIDE.md`.
 
----
+## Resume after an environment reset
 
-## 6. Add / edit a course
+Sandbox/hosted environments often drop `node_modules` and `.next` between sessions.
+One command installs only what's missing, builds if needed, and serves on port 3000:
 
-In `js/data.js`, copy any course object:
-
-```js
-{
-  id: "paste-a-new-uuid-here",
-  title: "My New Course",
-  category: "AI",              // must match one of CATEGORIES
-  month: "November 2026",      // must match MONTH_ORDER (or add a new month)
-  thumbnail: THUMB("your-file.webp"),  // or "images/thumbnails/your-file.webp"
-  about: "Short description...",
-  learn: ["Topic 1", "Topic 2"],
-  // officialUrl: "https://..."  // optional
-},
+```bash
+npm run resume
 ```
 
-Save and refresh — it appears on the home page and gets its own detail page automatically.
+## Verify
+```bash
+npm run typecheck        # TypeScript, no emit
+npm test                 # browser checks (requires: npx playwright install chromium)
+npm run verify:links     # static username/asset/manifest checks
+node scripts/verify-routes.mjs   # checks all public routes against a running server
+```
 
----
+Latest final audit: **25/25 browser checks**, **1,493/1,493 routes**, **0 link/asset failures**, clean install + production build passed.
 
-## 7. Deploy (free options)
+## Docs
+- `GUIDE.md` — full step-by-step guide, Vercel deployment, and maintenance
+- `docs/REVERSE-ENGINEERING.md` — how the original site works and what was rebuilt
+- `docs/TEST-REPORT.md` — verification results and bug-fix summary
 
-### Vercel (recommended — same as original)
-1. Push this repo to GitHub.
-2. Go to [vercel.com/new](https://vercel.com/new) → import the repo.
-3. Framework preset: **Other** → Build command: *(empty)* → Output directory: `.` (root).
-4. Deploy. You get a `*.vercel.app` URL in ~1 minute.
+## Admin Panel (add / manage courses)
 
-### Netlify
-1. Drag-and-drop the project folder onto [app.netlify.com/drop](https://app.netlify.com/drop), **or**
-2. Import from GitHub with build command empty, publish directory `.`.
+A password-protected admin panel at **`/admin`** lets you add, edit, and delete
+courses with photo uploads. It is **not public** — protected by Supabase Auth +
+Next.js middleware.
 
-### GitHub Pages
-1. Push to GitHub → Settings → Pages → Source: `main` branch, `/ (root)`.
-2. Site goes live at `https://<user>.github.io/<repo>/`.
+### One-time setup
 
----
+1. Create a free Supabase project: https://supabase.com → New Project.
+2. Copy keys from Settings → API into `.env.local`:
+   `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`,
+   `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`.
+3. Run `supabase/migrations/001_courses_and_categories.sql` in Supabase SQL Editor.
+4. Create an admin user: Supabase → Authentication → Users → Add user.
+5. Create a public storage bucket named `course-thumbnails` (Supabase → Storage).
 
-## 8. Verification checklist (already checked ✅)
+### Deploy
 
-- [x] Hero reads **“Welcome to Course Buddy 2”**
-- [x] Header logo + footer + `<title>` = **Course Buddy 2**
-- [x] Every **Get Access** → `https://telegram.me/CourseBuddy_Admin?text=…` with the correct course title
-- [x] Floating **Chat** → `https://telegram.me/CourseBuddy_Admin?text=Hi Buddy, I'm interested in courses`
-- [x] Footer Telegram link → `@CourseBuddy_Admin`
-- [x] Search, 17-category filter, watchlist, detail pages, related courses all working
-- [x] Responsive (mobile grid collapses, hamburger menu, sticky header)
+Add the four Supabase env vars to your Vercel project, redeploy, and run the SQL
+migration against your production Supabase project. Full details: `GUIDE.md` §14.
 
----
+## Important scope note
 
-## 9. Troubleshooting
-
-| Problem | Fix |
-|---|---|
-| Images show initials instead of photos | Original storage is unreachable — download thumbnails locally (see §4) |
-| `file://` shows blank page | Serve over `http://localhost` (see §3) |
-| Telegram opens wrong account | Check `telegramUsername` in `js/config.js` (no `@`, no spaces) |
-| New course not showing | Check `category` matches `CATEGORIES` and `month` matches `MONTH_ORDER` |
-| Watchlist empty after refresh | Browser cleared `localStorage` — save again |
-
----
-
-*Built as a step-by-step clone of buddy7.vercel.app. Only the brand name and Telegram handle were changed, as requested.*
+This is a complete **public-facing** clone. The original private admin/login/backend
+was not accessible without credentials, so a new admin panel was added at
+`/admin` (Supabase-backed, not the original). Telegram buttons open a chat with a
+pre-filled message; Telegram does not allow websites to auto-send messages or
+collect payments by themselves.

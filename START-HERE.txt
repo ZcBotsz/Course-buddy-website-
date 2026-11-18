@@ -1,0 +1,125 @@
+==========================================================
+  COURSE BUDDY  —  HOW TO PUT THIS ONLINE (EASY WAY)
+==========================================================
+
+You do NOT need to upload the folders one by one.
+You do NOT need GitHub.
+You do NOT need to install anything.
+You do NOT need to unzip this file.
+
+Vercel now accepts the ZIP file directly and builds it for you.
+
+
+----------------------------------------------------------
+  THE 5-STEP UPLOAD
+----------------------------------------------------------
+
+1. Open your browser and go to:
+
+       https://vercel.com/drop
+
+2. Sign in (or create a free Vercel account).
+   Signing in is required because this is a Next.js project,
+   and Vercel needs to build it.
+
+3. Drag THIS ZIP FILE onto that page.
+   Drag "course-buddy.zip" itself.
+   Do not unzip it first. Do not open the folders.
+
+4. Pick your team, type a project name (for example: course-buddy),
+   then click "Deploy".
+
+5. Wait for the build to finish.
+   Vercel gives you a live link like:
+
+       https://course-buddy.vercel.app
+
+Done. The whole site is online — all 1,472 courses,
+all pictures, search, watchlist, and the Telegram buttons.
+
+
+----------------------------------------------------------
+  WHY THIS WORKS
+----------------------------------------------------------
+
+Vercel detects that this is a Next.js project and builds it
+automatically. All the folders inside the ZIP (app, public,
+lib, data, styles) are supposed to be there — that is how
+Next.js is organised. Vercel reads them for you.
+
+You never have to touch the folders yourself.
+
+
+----------------------------------------------------------
+  SETTINGS (only if Vercel asks)
+----------------------------------------------------------
+
+  Framework .......... Next.js   (auto-detected)
+  Build Command ...... npm run build
+  Install Command .... npm ci     (or leave default)
+  Output Directory ... leave empty / default
+  Node.js Version .... 22.x or 24.x
+
+  Environment variables: NONE REQUIRED.
+  No database. No API keys. No Telegram bot token.
+
+  Optional: if you later attach your own domain, add
+     NEXT_PUBLIC_SITE_URL = https://your-domain.com
+  and redeploy. For a normal .vercel.app link, leave it unset.
+
+
+----------------------------------------------------------
+  UPDATING THE SITE LATER
+----------------------------------------------------------
+
+Each new drop on vercel.com/drop creates a NEW project.
+
+To update the SAME site instead:
+  - Open your project in the Vercel dashboard
+  - Drop the folder/ZIP onto that existing project
+  OR
+  - Connect a GitHub repo to get automatic deploys on every push
+
+
+----------------------------------------------------------
+  AFTER IT IS LIVE — QUICK CHECK
+----------------------------------------------------------
+
+Open your new link and confirm:
+  - The heading says "Welcome to Course Buddy"
+  - The header says "Course Buddy"
+  - Clicking "Get Access" opens Telegram @CourseBuddy_Admin
+  - Clicking "Chat" opens Telegram @CourseBuddy_Admin
+  - Pictures load, search works, categories work
+
+Note: the Telegram buttons open a chat with the message
+already typed. The visitor still taps Send — Telegram does
+not allow websites to send messages automatically.
+
+
+----------------------------------------------------------
+  IF YOU WANT TO RUN IT ON YOUR OWN COMPUTER
+----------------------------------------------------------
+
+You need Node.js 20 or newer installed, then:
+
+    npm ci
+    npm run build
+    npm run start
+
+and open http://localhost:3000
+
+If the site was already built and you just want it back up:
+
+    npm run resume
+
+
+----------------------------------------------------------
+  MORE HELP
+----------------------------------------------------------
+
+  GUIDE.md ............... full step-by-step guide
+  README.md .............. short overview
+  docs/TEST-REPORT.md .... what was tested and verified
+
+==========================================================

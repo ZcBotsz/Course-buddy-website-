@@ -1,0 +1,17 @@
+:root {
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-inter); }
+* { -webkit-tap-highlight-color: transparent; }
+::selection { background: color-mix(in srgb, var(--gold) 25%, transparent); }
+.cb-modal-backdrop { animation: cb-fade .18s ease-out; }
+.cb-modal-panel { animation: cb-up .22s cubic-bezier(.2,.8,.2,1); }
+@keyframes cb-fade { from { opacity: 0 } to { opacity: 1 } }
+@keyframes cb-up { from { opacity: 0; transform: translateY(16px) } to { opacity: 1; transform: none } }
+.cb-scroll-progress { position: fixed; top: 0; left: 0; height: 2px; background: var(--gold); z-index: 60; width: var(--progress, 0%); }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .moving-border::before, .cb-modal-backdrop, .cb-modal-panel { animation: none; }
+}
+.whitespace-pre-line { white-space: pre-line; }
