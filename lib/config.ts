@@ -1,4 +1,4 @@
-export const SITE_NAME = 'Course Buddy 2';
+export const SITE_NAME = 'Course Buddy';
 export const SITE_DESCRIPTION = 'Premium Courses Library';
 
 // Canonical origin for metadata/social previews.

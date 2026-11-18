@@ -1,10 +1,10 @@
-# Course Buddy 2
+# Course Buddy
 
 A rebranded, self-contained clone of the public `buddy7.vercel.app` course library.
 
 ## What changed
-- Brand: **Courses Buddy → Course Buddy 2**
-- Welcome heading: **Welcome to Course Buddy 2**
+- Brand: **Courses Buddy → Course Buddy**
+- Welcome heading: **Welcome to Course Buddy**
 - Every access/chat Telegram link: **@CourseBuddy_Admin** (`https://t.me/CourseBuddy_Admin`)
 - Catalogue, thumbnails, fonts, icons, favicon, and OG image are served locally.
 
@@ -27,11 +27,7 @@ npm run build
 npm run start
 ```
 
-## Deploy this branch to Vercel
-
-Import the GitHub repository and select `arena/eb0db19d-course-buddy-website`. Use the Next.js preset and leave the output directory at its default. The public catalog uses the JSON files in `data/`; the optional admin panel requires the Supabase environment variables in `.env.example`.
-
-## Other deployment options
+## Deploy to Vercel
 
 ### Easiest: Vercel Drop (no Git, no CLI, no unzipping)
 1. Go to **https://vercel.com/drop** and sign in.

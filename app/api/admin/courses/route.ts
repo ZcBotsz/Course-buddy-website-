@@ -36,6 +36,18 @@ export async function POST(req: Request) {
 
   try {
     const body = await req.json();
+
+    // Support _method override for PUT via POST (used by client components)
+    if (body._method === 'PUT') {
+      const id = body.id;
+      if (!id) {
+        return NextResponse.json({ error: 'Missing course id' }, { status: 400 });
+      }
+      const { id: _, _method: __, ...updates } = body;
+      const course = await updateCourse(id, updates);
+      return NextResponse.json({ course });
+    }
+
     const course = await createCourse({
       title: body.title,
       description: body.description ?? null,
